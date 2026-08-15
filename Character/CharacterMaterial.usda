@@ -1,0 +1,397 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.8.1)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["EyeMaterial", "SkinMaterial", "HairMaterial", "ClothMaterial"]
+
+    // ── EyeMaterial ──────────────────────────────────────────────
+
+    def Material "EyeMaterial"
+    {
+        reorder nameChildren = ["CelSurface"]
+        asset inputs:image (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.9497, 279.94595)
+                    int stackingOrderInSubgraph = 7
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/EyeMaterial/CelSurface.outputs:Token>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (380.59344, 280.66028)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 15
+
+        def NodeGraph "CelSurface" (
+            active = true
+        )
+        {
+            float inputs:Opacity = 1 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-247.99118, -6.217589)
+                        int stackingOrderInSubgraph = 18999
+                    }
+                }
+            )
+            float inputs:OpacityThreshold = 0 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-277.34067, 64.6011)
+                        int stackingOrderInSubgraph = 19102
+                    }
+                }
+            )
+            token outputs:Token (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (310, 284.5)
+                        int stackingOrderInSubgraph = 18979
+                    }
+                }
+            )
+            token outputs:Token.connect = </Root/EyeMaterial/CelSurface/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:node:pos = (128.45317, 277.92404)
+            int ui:nodegraph:node:stackingOrder = 50
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Out"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (478.46875, 277.9297)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18994
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/EyeMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor = (0.20, 0.18, 0.14) (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-462.7479, 358.1327)
+                            int stackingOrderInSubgraph = 19042
+                        }
+                    }
+                )
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity = 1
+                float inputs:opacity.connect = </Root/EyeMaterial/CelSurface.inputs:Opacity>
+                float inputs:opacityThreshold.connect = </Root/EyeMaterial/CelSurface.inputs:OpacityThreshold>
+                float inputs:roughness = 0.5
+                float inputs:specular = 0.9
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (206.07812, 269.0547)
+                int ui:nodegraph:node:stackingOrder = 19002
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "lin_srgb"
+            )
+            asset inputs:file.connect = </Root/EyeMaterial.inputs:image>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-140.72435, 274.42676)
+            int ui:nodegraph:node:stackingOrder = 46
+        }
+    }
+
+    // ── SkinMaterial ──────────────────────────────────────────────
+
+    def Material "SkinMaterial"
+    {
+        reorder nameChildren = ["CelSurface"]
+        asset inputs:image (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.9497, 279.94595)
+                    int stackingOrderInSubgraph = 7
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/SkinMaterial/CelSurface.outputs:Token>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (380.59344, 280.66028)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 15
+
+        def NodeGraph "CelSurface" (
+            active = true
+        )
+        {
+            float inputs:Opacity = 1 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-247.99118, -6.217589)
+                        int stackingOrderInSubgraph = 18999
+                    }
+                }
+            )
+            float inputs:OpacityThreshold = 0 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-277.34067, 64.6011)
+                        int stackingOrderInSubgraph = 19102
+                    }
+                }
+            )
+            token outputs:Token (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (310, 284.5)
+                        int stackingOrderInSubgraph = 18979
+                    }
+                }
+            )
+            token outputs:Token.connect = </Root/SkinMaterial/CelSurface/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:node:pos = (128.45317, 277.92404)
+            int ui:nodegraph:node:stackingOrder = 50
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Out"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (478.46875, 277.9297)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18994
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/SkinMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    colorSpace = "lin_srgb"
+                )
+                float inputs:ior
+                float inputs:metallic = 0
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity = 1
+                float inputs:opacity.connect = </Root/SkinMaterial/CelSurface.inputs:Opacity>
+                float inputs:opacityThreshold.connect = </Root/SkinMaterial/CelSurface.inputs:OpacityThreshold>
+                float inputs:roughness = 0.5
+                float inputs:specular = 0.9
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (206.07812, 269.0547)
+                int ui:nodegraph:node:stackingOrder = 19002
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "lin_srgb"
+            )
+            asset inputs:file.connect = </Root/SkinMaterial.inputs:image>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-140.72435, 274.42676)
+            int ui:nodegraph:node:stackingOrder = 46
+        }
+    }
+
+    // ── HairMaterial ──────────────────────────────────────────────
+
+    def Material "HairMaterial"
+    {
+        reorder nameChildren = ["CelSurface"]
+        asset inputs:image (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.9497, 279.94595)
+                    int stackingOrderInSubgraph = 7
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/HairMaterial/CelSurface.outputs:Token>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (380.59344, 280.66028)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 15
+
+        def NodeGraph "CelSurface" (
+            active = true
+        )
+        {
+            float inputs:Opacity = 1 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-247.99118, -6.217589)
+                        int stackingOrderInSubgraph = 18999
+                    }
+                }
+            )
+            float inputs:OpacityThreshold = 0.3 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-277.34067, 64.6011)
+                        int stackingOrderInSubgraph = 19102
+                    }
+                }
+            )
+            token outputs:Token (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (310, 284.5)
+                        int stackingOrderInSubgraph = 18979
+                    }
+                }
+            )
+            token outputs:Token.connect = </Root/HairMaterial/CelSurface/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:node:pos = (128.45317, 277.92404)
+            int ui:nodegraph:node:stackingOrder = 50
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Out"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (478.46875, 277.9297)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18994
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/HairMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    colorSpace = "lin_srgb"
+                )
+                float inputs:ior
+                float inputs:metallic = 0
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity = 1
+                float inputs:opacity.connect = </Root/HairMaterial/CelSurface.inputs:Opacity>
+                float inputs:opacityThreshold.connect = </Root/HairMaterial/CelSurface.inputs:OpacityThreshold>
+                float inputs:roughness = 0.6
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (206.07812, 269.0547)
+                int ui:nodegraph:node:stackingOrder = 19002
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "lin_srgb"
+            )
+            asset inputs:file.connect = </Root/HairMaterial.inputs:image>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-140.72435, 274.42676)
+            int ui:nodegraph:node:stackingOrder = 46
+        }
+    }
+
+    // ── ClothMaterial ─────────────────────────────────────────────
+
+    def Material "ClothMaterial"
+    {
+        reorder nameChildren = ["CelSurface"]
+        asset inputs:image (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.9497, 279.94595)
+                    int stackingOrderInSubgraph = 7
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/ClothMaterial/CelSurface.outputs:Token>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (380.59344, 280.66028)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 15
+
+        def NodeGraph "CelSurface" (
+            active = true
+        )
+        {
+            float inputs:Opacity = 0.85 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-247.99118, -6.217589)
+                        int stackingOrderInSubgraph = 18999
+                    }
+                }
+            )
+            float inputs:OpacityThreshold = 0.05 (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-277.34067, 64.6011)
+                        int stackingOrderInSubgraph = 19102
+                    }
+                }
+            )
+            token outputs:Token (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (310, 284.5)
+                        int stackingOrderInSubgraph = 18979
+                    }
+                }
+            )
+            token outputs:Token.connect = </Root/ClothMaterial/CelSurface/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:node:pos = (128.45317, 277.92404)
+            int ui:nodegraph:node:stackingOrder = 50
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Out"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (478.46875, 277.9297)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18994
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/ClothMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    colorSpace = "lin_srgb"
+                )
+                float inputs:ior
+                float inputs:metallic = 0
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity = 1
+                float inputs:opacity.connect = </Root/ClothMaterial/CelSurface.inputs:Opacity>
+                float inputs:opacityThreshold.connect = </Root/ClothMaterial/CelSurface.inputs:OpacityThreshold>
+                float inputs:roughness = 0.6
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (206.07812, 269.0547)
+                int ui:nodegraph:node:stackingOrder = 19002
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "lin_srgb"
+            )
+            asset inputs:file.connect = </Root/ClothMaterial.inputs:image>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-140.72435, 274.42676)
+            int ui:nodegraph:node:stackingOrder = 46
+        }
+    }
+}
